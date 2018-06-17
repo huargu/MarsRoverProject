@@ -1,0 +1,7 @@
+language: csharp
+solution: "./MarsRover.sln"
+install:
+  - dotnet restore MarsRover.sln
+script:
+  - dotnet build
+  - dotnet test MarsRover.Tests/MarsRover.Tests.csproj
