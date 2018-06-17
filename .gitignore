@@ -1,5 +1,6 @@
 /MarsRover/bin
 /MarsRover/obj
+/MarsRover/log.txt
 /MarsRover/.vscode
 /MarsRover.Tests/bin
 /MarsRover.Tests/obj

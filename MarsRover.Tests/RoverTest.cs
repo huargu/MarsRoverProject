@@ -1,4 +1,5 @@
 using System;
+using MarsRover.Classes;
 using Xunit;
 
 namespace mars.tests
@@ -20,7 +21,7 @@ namespace mars.tests
             int startX = Convert.ToInt32(startCoordinates[0]);
             startDirection = (Direction)startDirection.ParseByDescription(startCoordinates[2]);
 
-            Rover vehicle = new Rover();
+            Rover vehicle = new Rover(new ConsoleLogger());
             vehicle.Landing(new Point(startX, startY), startDirection, plateau);
 
             vehicle.Move(operations);
@@ -44,7 +45,7 @@ namespace mars.tests
             int startX = Convert.ToInt32(startCoordinates[0]);
             startDirection = (Direction)startDirection.ParseByDescription(startCoordinates[2]);
 
-            Rover vehicle = new Rover();
+            Rover vehicle = new Rover(new ConsoleLogger());
             vehicle.Landing(new Point(startX, startY), startDirection, plateau);
 
             vehicle.Move(operations);

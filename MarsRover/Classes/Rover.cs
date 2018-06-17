@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using MarsRover.Interfaces;
 
 public class Rover : IRover
 {
     public Point CurrentPosition { get; set;}
     public Direction FacingDirection { get; private set; }
     public ILand RoverLand { get; private set; }
-
-    public Rover()
+    private ILogger _logger { get; set; }
+    public Rover(ILogger logger)
     {
-        
+        this._logger = logger;
     }
 
     public void Landing(Point initialPoint, Direction initialDirection, ILand roverLand)
@@ -16,6 +17,7 @@ public class Rover : IRover
         this.CurrentPosition = initialPoint;
         this.FacingDirection = initialDirection;
         this.RoverLand = roverLand;
+        _logger.AddLog(string.Format("Landed on: {0} {1}, Facing: {2}", this.CurrentPosition.X, this.CurrentPosition.Y, this.FacingDirection.GetDescription()));
     }
 
     public void Move(string operations)
@@ -46,6 +48,7 @@ public class Rover : IRover
 
     private void TurnLeft()
     {
+        _logger.AddLog("turning left");
         if(this.FacingDirection == Direction.North)
             this.FacingDirection = Direction.West;
         else
@@ -54,6 +57,7 @@ public class Rover : IRover
 
     private void TurnRight()
     {
+        _logger.AddLog("turning right");
         if(this.FacingDirection == Direction.West)
             this.FacingDirection = Direction.North;
         else
@@ -62,6 +66,7 @@ public class Rover : IRover
 
     private void MoveForward()
     {
+        _logger.AddLog("moving forward");
         switch(this.FacingDirection)
         {
             case Direction.North:

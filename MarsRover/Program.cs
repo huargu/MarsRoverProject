@@ -1,4 +1,5 @@
 ﻿using System;
+using MarsRover.Classes;
 
 namespace mars_rover_project
 {
@@ -26,7 +27,7 @@ namespace mars_rover_project
                 int startY = Convert.ToInt32(startCoordinates[1]);
                 startDirection = (Direction)startDirection.ParseByDescription(startCoordinates[2]);
                 
-                Rover vehicle = new Rover();
+                Rover vehicle = new Rover(new FileLogger("log.txt"));
                 vehicle.Landing(new Point(startX, startY), startDirection, plateau);
 
                 Console.WriteLine("Enter operations for rover:");
